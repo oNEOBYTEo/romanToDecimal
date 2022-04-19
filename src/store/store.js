@@ -1,5 +1,8 @@
-import { createStore } from 'redux';
+import { configureStore } from '@reduxjs/toolkit'
+import convertReducer from '../features/convertSlice';
 
-import rootReducer from '../reducers/root.reducer';
-
-export default createStore(rootReducer);
+export default configureStore({
+  reducer: {
+    convert: convertReducer,
+  },
+})

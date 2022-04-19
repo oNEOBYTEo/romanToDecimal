@@ -1,13 +1,13 @@
 import {useState} from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { Row, Col, Form, Button } from 'react-bootstrap';
-import {decimalToRoman, romanToDecimal} from '../actions/convert.actions';
+import {decimalToRoman, romanToDecimal} from '../features/convertSlice';
 
 function FormConverter() {
   const [optionA, setOptionA] = useState('romanos');
   const [optionB, setOptionB] = useState('decimal');
   const [payload, setPayload] = useState('');
-  const result = useSelector(store => store.state);
+  const result = useSelector(state => state.convert.value);
   const dispatch = useDispatch();
 
   const changeOption = (e) => {
@@ -26,7 +26,6 @@ function FormConverter() {
       setOptionA('decimal');
       setOptionB('romanos');
     }
-
   };
 
   const convert = (e) => {
